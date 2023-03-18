@@ -2,11 +2,15 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { Player, Controls } from '@lottiefiles/react-lottie-player';
 import Radio from '../components/Radio'
 import Header from '../components/header'
+import Lottie from "lottie-react";
+import laptopAnimation from '../components/56922-code-typing-concept.json'
 // import { useForm } from "react-hook-form";
 // import FormInput from "./FormInput";
 // import Table from "./Table";
+import '../App2.css'
 
 import Card from "../components/Card";
 import Home from "./Home";
@@ -89,19 +93,37 @@ const Compose = (props) => {
   return (
     <>
     <Header color="navColor"></Header>
+    <div className='lotiDiv'>
+            <Player
+                autoplay
+                loop
+                src="https://assets2.lottiefiles.com/private_files/lf30_wqypnpu5.json"
+                style={{ height: '700px', width: '700px' }}
+            >
+                <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']} />
+            </Player>
+
+        </div>
+    {/* <div>
+    <Lottie animationData={laptopAnimation} className="h-100"/>
+  </div> */}
+   <div className="background ml-[30rem]">
+        <div className="shape mt-[5rem] ml-10" ></div>
+        <div className="shape"></div> 
+    </div> 
       <form onSubmit={handleSubmit}
         action="/compose"
         method="post"
-        className="m-32 mt-10 items-center justify-center"
+        className="login_form ml-[35rem] mt-12 w-[60rem] "
       >
-          <div className="radio-btn-container flex gap-10 items-center text-3xl mb-10 justify-center">
+          <div className=" text-black flex gap-10 items-center text-md mb-10 justify-center">
         <Radio
           changed={(e)=> {setSelected(e.target.value);setIsChecked(true);}}
           
           
         //   isSelected={selected === "General"}
         
-         
+         className=""
           label="General"
            value="General"
           
@@ -128,8 +150,8 @@ const Compose = (props) => {
          
         />
       </div>
-        <div className="form-group m-24">
-          <label className="form-label text-2xl mb-4">Title</label>
+        <div className="form-group m-24 mb-[-1rem] text-black">
+          <label className="text-black text-2xl mb-4">Title</label>
           <input
             className="form-control text-2xl h-24 mb-24"
             type="text"
@@ -137,7 +159,7 @@ const Compose = (props) => {
             value={formInputData.title}
             onChange={handleChange}
           />
-          <label className="form-label text-2xl mb-4">Post</label>
+          <label className="text-black  text-2xl mb-4">Post</label>
           <textarea
             className="form-control  text-2xl h-52 mb-24"
             name="content"
@@ -153,7 +175,7 @@ const Compose = (props) => {
       
 
         <button
-          className="bg-cyan-500 px-10 py-5 my-10 flex items-center justify-center mx-[50rem] text-3xl opacity-90 hover:opacity-100 hover:drop-shadow-xl rounded-3xl"
+          className="bg-cyan-500 px-10 py-5 my-10 flex items-center justify-center text-3xl opacity-90 hover:opacity-100 hover:drop-shadow-xl rounded-3xl publish-button"
           type="submit"
           onClick={handleSubmit}
         >

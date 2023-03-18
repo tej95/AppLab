@@ -7,6 +7,7 @@ import { useState , useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 
+
 const Home = () => {
   const [user, setUser] = useState([]);
  
@@ -46,12 +47,13 @@ const Home = () => {
 
   return (
     <>
-    <Header></Header>
-    <nav className="flex m-10 items-center justify-center">
+    <Header color={undefined}></Header>
+    
+    <nav className="flex mt-[-3rem] ml-[54rem] ">
       <ul className="flex gap-28">
-        <button className="hover:text-white text-3xl" onClick={handleClick} value="General">General</button>
-        <button className="hover:text-white text-3xl" onClick={handleClick} value="Technical">Technical</button>
-        <button className="hover:text-white text-3xl" onClick={handleClick} value="Academic">Academic</button>
+        <button className="hover:text-white bg-transparent text-3xl" onClick={handleClick} value="General">General</button>
+        <button className="hover:text-white  bg-transparent text-3xl" onClick={handleClick} value="Technical">Technical</button>
+        <button className="hover:text-white bg-transparent text-3xl" onClick={handleClick} value="Academic">Academic</button>
        
       </ul>
     </nav>
@@ -73,19 +75,13 @@ const Home = () => {
 
     {
         
-        user.map((list) => (click===list.category &&   <div className="mt-[6rem]"><div className=" myCard drop-shadow-xl">
-        <h1 className="cardTitle capitalize text-3xl "><span> <FontAwesomeIcon icon={faCircleUser} className="text-6xl pr-4" /></span>{list.title}</h1>
-        <hr />
-        <div className="cardBody">
-        <p className="capitalize">{list.content}</p>
-        </div>
+        user.map((list) => (click===list.category &&   <Card title={list.title} content={list.content}/>))}
+        
        
-       </div> </div>   ))}
-    </div>
-   
+         
     
      
-            
+            </div>
           
         
       

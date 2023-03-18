@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import Fab from '@mui/material/Fab';
 import Zoom from '@mui/material/Zoom';
 
-function CreateArea(props)
+function CreateArea(props )
 {
     const [isExpanded, setExpanded] =useState(false);
 
@@ -11,7 +11,7 @@ function CreateArea(props)
         content: ""
     });
 
-    function handleChange(event){
+    function handleChange(event ){
         const {name, value}= event.target;
         
         setEntry((prevEntry)=>{

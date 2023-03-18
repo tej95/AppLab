@@ -3,7 +3,7 @@ import React from 'react'
 const Radio = (props) => {
     const { changed, id, isSelected,isChecked, label, value } = props;
   return (
-    <div><div className="RadioButton m-4">
+    <div><div className="text-black m-4">
     <input
       id={id}
       onClick={changed}
@@ -12,7 +12,7 @@ const Radio = (props) => {
       name="category"
       checked={isChecked}
     />
-    <label htmlFor={id} className="m-2">{label} </label>
+    <label htmlFor={id} className="m-2 text-black">{label} </label>
   </div></div>
   )
 }
