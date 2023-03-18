@@ -1,8 +1,11 @@
 import React from "react";
 import Card from "../components/Card";
 import Compose from "./Compose";
+import Header from '../components/header'
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState , useEffect } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 
 const Home = () => {
   const [user, setUser] = useState([]);
@@ -43,14 +46,18 @@ const Home = () => {
 
   return (
     <>
+    <Header></Header>
     <nav className="flex m-10 items-center justify-center">
-      <ul className="flex gap-20">
-        <button className="hover:text-cyan-500" onClick={handleClick} value="General">General</button>
-        <button className="hover:text-cyan-500" onClick={handleClick} value="Technical">Technical</button>
-        <button className="hover:text-cyan-500" onClick={handleClick} value="Academic">Academic</button>
+      <ul className="flex gap-28">
+        <button className="hover:text-white text-3xl" onClick={handleClick} value="General">General</button>
+        <button className="hover:text-white text-3xl" onClick={handleClick} value="Technical">Technical</button>
+        <button className="hover:text-white text-3xl" onClick={handleClick} value="Academic">Academic</button>
        
       </ul>
     </nav>
+    <div className="topDiv"></div>
+
+        <h1 id="icheading"> INNOVATION CENTER</h1>
 
      {/* {user.map((list)=>(<div className="gap-4">
       <div>
@@ -60,13 +67,22 @@ const Home = () => {
         <p>{list.content}</p>
       </div>
     </div>))}  */}
+    <div className="mt-[30rem]">
+
+
+
     {
         
-        user.map((list) => (click===list.category && <div className=" rounded-xl mb-10 bg-[#191970] text-white p-7 m-10  ">
-           <h1 className="mb-5 text-3xl font-semibold">{list.title}</h1>
-           <hr />
-           <p className="mt-5 text-2xl font-semibold">{list.content}</p>
-          </div> ))}
+        user.map((list) => (click===list.category &&   <div className="mt-[6rem]"><div className=" myCard drop-shadow-xl">
+        <h1 className="cardTitle capitalize text-3xl "><span> <FontAwesomeIcon icon={faCircleUser} className="text-6xl pr-4" /></span>{list.title}</h1>
+        <hr />
+        <div className="cardBody">
+        <p className="capitalize">{list.content}</p>
+        </div>
+       
+       </div> </div>   ))}
+    </div>
+   
     
      
             

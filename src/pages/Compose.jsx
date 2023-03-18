@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Radio from '../components/Radio'
+import Header from '../components/header'
 // import { useForm } from "react-hook-form";
 // import FormInput from "./FormInput";
 // import Table from "./Table";
@@ -87,12 +88,13 @@ const Compose = (props) => {
 
   return (
     <>
+    <Header color="navColor"></Header>
       <form onSubmit={handleSubmit}
         action="/compose"
         method="post"
         className="m-32 mt-10 items-center justify-center"
       >
-          <div className="radio-btn-container flex gap-10 items-center justify-center">
+          <div className="radio-btn-container flex gap-10 items-center text-3xl mb-10 justify-center">
         <Radio
           changed={(e)=> {setSelected(e.target.value);setIsChecked(true);}}
           
@@ -126,18 +128,18 @@ const Compose = (props) => {
          
         />
       </div>
-        <div className="form-group">
-          <label className="form-label">Title</label>
+        <div className="form-group m-24">
+          <label className="form-label text-2xl mb-4">Title</label>
           <input
-            className="form-control"
+            className="form-control text-2xl h-24 mb-24"
             type="text"
             name="title"
             value={formInputData.title}
             onChange={handleChange}
           />
-          <label className="form-label">Post</label>
+          <label className="form-label text-2xl mb-4">Post</label>
           <textarea
-            className="form-control"
+            className="form-control  text-2xl h-52 mb-24"
             name="content"
             id=""
             cols="70"
@@ -151,7 +153,7 @@ const Compose = (props) => {
       
 
         <button
-          className="bg-cyan-500 px-10 py-5 my-10 items-center justify-center rounded-3xl"
+          className="bg-cyan-500 px-10 py-5 my-10 flex items-center justify-center mx-[50rem] text-3xl opacity-90 hover:opacity-100 hover:drop-shadow-xl rounded-3xl"
           type="submit"
           onClick={handleSubmit}
         >
