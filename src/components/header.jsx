@@ -16,7 +16,7 @@ const header = (props) => {
       </div>
         <ul className="nav navbar-nav navbar-right mt-4 rounded-xl gap-3 ">
          
-          <li id="home" className=' rounded-3xl hover:drop-shadow-xl'><a href="/home" className='text-white' style={{color: "white"}}>HOME</a></li>
+          <li id="home" className=' rounded-3xl hover:drop-shadow-xl'><a href="/" className='text-white' style={{color: "white"}}>HOME</a></li>
           <li id="compose" className=' rounded-3xl hover:drop-shadow-xl'><a href="/compose" className='text-white' style={{color: "white"}}>COMPOSE</a></li>
           <li id="contact" className=' rounded-3xl hover:drop-shadow-xl'><a href="/contact" style={{color: "white"}}>CONTACT US</a></li>
         </ul>
