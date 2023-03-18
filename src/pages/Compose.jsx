@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Radio from '../components/Radio'
@@ -26,17 +26,34 @@ const Compose = (props) => {
 
   const handleChange = (evnt) => {
     console.log(evnt);
+    
     const newInput = (data) => ({
       ...data,
       [evnt.target.name]: evnt.target.value,category:selected
     });
     setformInputData(newInput);
+   
     setIsChecked(false)
    
   };
 
-  const handleSubmit = (evnt) => {
+  const handleSubmit = async (evnt) => {
+   
+    
     evnt.preventDefault();
+   
+    
+    const response = await fetch("http://localhost:8080/test",{
+      method: "POST",
+      body: JSON.stringify(formInputData),
+      headers:{
+        "Content-Type" :"application/json"
+      }
+    }) ;
+    const response1 = await response.json();
+    console.log(response1);
+    
+   
     setIsChecked(false)
     const value = (data) => ({...formInputData,category:selected})
     setformInputData(value);
@@ -51,13 +68,11 @@ const Compose = (props) => {
       setformInputData(emptyInput);
     }
    
+   
   };
-  const redirectToHome = () => {
-    navigate("/home", {
-      state: tableData,
-    });
-  };
-  console.log(tableData);
+  
+
+ 
   // const { register, handleSubmit , getValues } = useForm();
   // const [data, setData] = useState([]);
   // // const [data, setData] = useState([{title: "", content: ""}])
@@ -72,10 +87,10 @@ const Compose = (props) => {
 
   return (
     <>
-      <form
+      <form onSubmit={handleSubmit}
         action="/compose"
         method="post"
-        className="m-4 items-center justify-center"
+        className="m-32 mt-10 items-center justify-center"
       >
           <div className="radio-btn-container flex gap-10 items-center justify-center">
         <Radio
@@ -144,13 +159,13 @@ const Compose = (props) => {
         </button>
       </form>
 
-      <button
+      {/* <button
         type="button"
-        className="ml-[40em] mt-10 px-10 py-5 flex items-center justify-center rounded-full text-white  bg-blue-500"
+        className="ml-[40em] mt-10 px-10 py-5 flex items-center justify-center opacity-70 rounded-full text-white  bg-blue-500 hover:opacity-80 hover:drop-shadow-xl"
         onClick={redirectToHome}
       >
         Click to go to home page
-      </button>
+      </button> */}
 
       {/* <div>
     <div>

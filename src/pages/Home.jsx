@@ -2,11 +2,11 @@ import React from "react";
 import Card from "../components/Card";
 import Compose from "./Compose";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState , useEffect } from "react";
 
-const Home = ({ tableData }) => {
-  const navigate = useNavigate();
-  const location = useLocation();
+const Home = () => {
+  const [user, setUser] = useState([]);
+ 
 
   const info = [
     {
@@ -23,6 +23,22 @@ const Home = ({ tableData }) => {
    const [click, setClick] = useState("");
   const handleClick=(e)=>{setClick(e.target.value)}
   console.log(click);
+
+
+  const getUser = async () => { const response = await fetch("http://localhost:8080/test",{
+    method: "GET",
+    
+  }) ;
+  const data = await response.json();
+  setUser(data);
+ 
+ 
+    
+
+  }
+
+ useEffect(()=>{getUser();},[])
+ 
   
 
   return (
@@ -32,23 +48,32 @@ const Home = ({ tableData }) => {
         <button className="hover:text-cyan-500" onClick={handleClick} value="General">General</button>
         <button className="hover:text-cyan-500" onClick={handleClick} value="Technical">Technical</button>
         <button className="hover:text-cyan-500" onClick={handleClick} value="Academic">Academic</button>
+       
       </ul>
     </nav>
-      <div className=""> {
+
+     {/* {user.map((list)=>(<div className="gap-4">
+      <div>
+        <h1 className="">{list.title}</h1>
+      </div>
+      <div className="">
+        <p>{list.content}</p>
+      </div>
+    </div>))}  */}
+    {
         
-        location.state.map((list) => (click===list.category && <div className=" rounded-xl mb-10 bg-[#191970] text-white p-7 m-10  ">
+        user.map((list) => (click===list.category && <div className=" rounded-xl mb-10 bg-[#191970] text-white p-7 m-10  ">
            <h1 className="mb-5 text-3xl font-semibold">{list.title}</h1>
            <hr />
            <p className="mt-5 text-2xl font-semibold">{list.content}</p>
           </div> ))}
-          {/* //click===list.category && <div className=" rounded-lg mb-28 bg-blue-200  p-6 text-blue shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:shadow-black/30">
-          //   <h1 className="mb-5 text-3xl font-semibold">{list.title}</h1>
-          //  </div> */}
+    
+     
             
           
         
       
-      </div>
+      
     </>
   );
 };

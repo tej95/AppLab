@@ -7,7 +7,7 @@ const header = () => {
    <nav className="navbar navbar-default">
     <div className="container">
       <div className="navbar-header">
-        <p className="navbar-brand">DAILY JOURNAL</p>
+        <p className="navbar-brand">INNOVATION CENTER</p>
       </div>
         <ul className="nav navbar-nav navbar-right">
          

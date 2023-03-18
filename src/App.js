@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home.jsx'
 import Contact from './pages/Contact.jsx';
 import Compose from './pages/Compose.jsx';
+import Footer from './components/footer'
 import Sidebar from './components/SidebarMain';
 
 
@@ -52,6 +53,7 @@ function App() {
     
     
       </div>
+    
     </>
   );
 }
