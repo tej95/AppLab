@@ -153,7 +153,7 @@ const Compose = (props) => {
       
 
         <button
-          className="bg-cyan-500 px-10 py-5 my-10 flex items-center justify-center mx-[50rem] text-3xl opacity-90 hover:opacity-100 hover:drop-shadow-xl rounded-3xl"
+          className="bg-cyan-500 px-10 py-5 my-10 flex items-center justify-center mx-[55rem] text-3xl opacity-90 hover:opacity-100 hover:drop-shadow-xl rounded-3xl"
           type="submit"
           onClick={handleSubmit}
         >
